@@ -5,7 +5,7 @@ enum class LandiaPacketType(private val payloadChannel: String? = null) {
     ANTICHEAT_VERSION("CL|AHVersion"),
     ANTI_CHEAT;
 
-    fun getPayloadChannel(landiaPacketManager: LandiaPacketManager): String {
+    fun getPayloadChannel(landiaPacketManager: LandiaPacketManager, packet: LandiaPacket): String {
         if (payloadChannel != null) return payloadChannel
 
         if (this == ANTI_CHEAT) {
