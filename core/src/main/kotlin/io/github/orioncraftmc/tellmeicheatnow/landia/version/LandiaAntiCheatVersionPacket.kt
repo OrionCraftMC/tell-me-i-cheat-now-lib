@@ -12,7 +12,7 @@ data class LandiaAntiCheatVersionPacket(val version: String?) : LandiaPacket {
             return LandiaAntiCheatVersionPacket(ByteArrayInputStream(data).use {
                 // If we have a version
                 if (it.read() == 1) {
-                    ByteArray(it.read()).decodeToString()
+                    it.readNBytes(it.read()).decodeToString()
                 } else {
                     null
                 }

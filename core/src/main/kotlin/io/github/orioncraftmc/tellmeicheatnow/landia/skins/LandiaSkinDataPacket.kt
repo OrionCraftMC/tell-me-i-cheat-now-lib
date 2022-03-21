@@ -25,7 +25,7 @@ data class LandiaSkinDataPacket(
                 val cloakUrl = stream.readUTF().takeIf { it.isNotEmpty() }
                 val skinUrl = stream.readUTF().takeIf { it.isNotEmpty() }
                 val upsideDown = stream.readBoolean()
-                val scale = stream.readFloat()
+                val scale = stream.readFloat().takeUnless { it == 0.0f } ?: 1.0f
 
                 LandiaSkinDataPacket(name, skinUrl, cloakUrl, upsideDown, scale)
             }
