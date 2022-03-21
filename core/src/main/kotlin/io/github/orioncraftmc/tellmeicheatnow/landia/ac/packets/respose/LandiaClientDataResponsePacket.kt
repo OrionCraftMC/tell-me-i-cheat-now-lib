@@ -40,6 +40,7 @@ data class LandiaClientDataResponsePacket(
                 it.write(LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE.id)
 
                 // Write the constants
+                it.writeDouble(packet.constants.speedModifier)
                 it.writeDouble(packet.constants.unknownData1)
                 it.writeDouble(packet.constants.unknownData2)
                 it.writeDouble(packet.constants.unknownData3)
