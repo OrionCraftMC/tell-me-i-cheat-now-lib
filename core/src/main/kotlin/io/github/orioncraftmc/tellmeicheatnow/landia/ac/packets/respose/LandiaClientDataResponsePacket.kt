@@ -17,7 +17,9 @@ data class LandiaClientDataResponsePacket(
         override fun read(data: ByteArray): LandiaClientDataResponsePacket {
             DataInputStream(data.inputStream()).use {
                 // Make sure we are reading the correct packet type
-                assert(it.read() == LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE.id)
+                val type = it.read()
+                if (type != LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE.id)
+                    throw Error("Expected packet type to be ${LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE.id}, got $type instead")
 
                 return LandiaClientDataResponsePacket(
                     LandiaClientDataConstants(
