@@ -1,14 +1,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.20-M1" apply false
+    kotlin("jvm") version "1.6.20" apply false
 }
 
 subprojects {
     apply(plugin = "org.gradle.java-library")
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
-    group = "io.github.orioncraftmc.tellmeicheat"
+    group = "io.github.orioncraftmc.tellmeicheatnow"
     version = "1.0-SNAPSHOT"
 
     repositories {
