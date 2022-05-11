@@ -1,12 +1,12 @@
 package io.github.orioncraftmc.tellmeicheatnow.landia
 
-import io.github.orioncraftmc.tellmeicheatnow.model.TMICNPacket
-import io.github.orioncraftmc.tellmeicheatnow.model.TMICNSupportedServer
+import io.github.orioncraftmc.tellmeicheatnow.model.TmicnPacket
+import io.github.orioncraftmc.tellmeicheatnow.model.TmicnSupportedServer
 
-interface LandiaPacket : TMICNPacket {
+interface LandiaPacket : TmicnPacket {
     val type: LandiaPacketType
 
     override val server
-        get() = TMICNSupportedServer.CRAFTLANDIA
+        get() = TmicnSupportedServer.CRAFTLANDIA
 }
 

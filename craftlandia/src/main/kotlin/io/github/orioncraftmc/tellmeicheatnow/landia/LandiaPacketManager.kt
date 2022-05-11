@@ -13,13 +13,13 @@ import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.respose.LandiaCl
 import io.github.orioncraftmc.tellmeicheatnow.landia.constants.LandiaAntiCheatConstants
 import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionPacket
-import io.github.orioncraftmc.tellmeicheatnow.model.TMICNPacketManager
-import io.github.orioncraftmc.tellmeicheatnow.model.TMICNSupportedServer
+import io.github.orioncraftmc.tellmeicheatnow.model.TmicnPacketManager
+import io.github.orioncraftmc.tellmeicheatnow.model.TmicnSupportedServer
 import io.github.orioncraftmc.tellmeicheatnow.model.reply.ReplyAction
 import kotlin.reflect.KClass
 
 class LandiaPacketManager(val constants: LandiaAntiCheatConstants) :
-    TMICNPacketManager<LandiaPacket, LandiaPacketListener>() {
+    TmicnPacketManager<LandiaPacket, LandiaPacketListener>() {
 
     override fun handleRawIncomingPacket(payloadChannel: String, data: ByteArray): ReplyAction? {
         return when (val packetType = LandiaPacketType.getTypeByPayloadChannel(payloadChannel, this)) {
@@ -55,7 +55,7 @@ class LandiaPacketManager(val constants: LandiaAntiCheatConstants) :
 
     }
 
-    override val server: TMICNSupportedServer = TMICNSupportedServer.CRAFTLANDIA
+    override val server: TmicnSupportedServer = TmicnSupportedServer.CRAFTLANDIA
 
     override fun init() {
         registerPacket(LandiaSkinDataPacket::class)

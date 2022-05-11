@@ -1,5 +1,5 @@
 package io.github.orioncraftmc.tellmeicheatnow.model.reply
 
-import io.github.orioncraftmc.tellmeicheatnow.model.TMICNPacket
+import io.github.orioncraftmc.tellmeicheatnow.model.TmicnPacket
 
-data class PacketReplyAction<T : TMICNPacket>(val packet: T) : ReplyAction
+data class PacketReplyAction<T : TmicnPacket>(val packet: T) : ReplyAction
