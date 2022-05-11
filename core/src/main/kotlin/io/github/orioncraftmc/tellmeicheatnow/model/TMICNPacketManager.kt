@@ -32,9 +32,9 @@ abstract class TMICNPacketManager<P : TMICNPacket, L : Any> {
         if (packetType.companionObjectInstance !is TMICNPacketCompanion<*>) {
             throw Error("Packet of type $packetType's companion doesn't implement TMICPacketCompanion<${packetType}>")
         }
+
         mulitplexPacketCompanionByClassMap.getOrPut(multiplexType as KClass<P>) { mutableMapOf() }[enum] =
             packetType.companionObjectInstance as TMICNPacketCompanion<P>
-
     }
 
     fun <M : P, E : Enum<*>> getMultiplexPacketCompanionByEnum(multiplexType: KClass<M>, enum: E): TMICNPacketCompanion<P>? {
@@ -51,7 +51,7 @@ abstract class TMICNPacketManager<P : TMICNPacket, L : Any> {
     }
 
 
-    internal inline fun invokeListeners(crossinline invoker: L.() -> Unit) {
+    inline fun invokeListeners(crossinline invoker: L.() -> Unit) {
         listeners.forEach(invoker)
     }
 

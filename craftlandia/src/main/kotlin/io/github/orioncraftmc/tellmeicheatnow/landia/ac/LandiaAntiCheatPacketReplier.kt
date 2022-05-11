@@ -1,11 +1,10 @@
 package io.github.orioncraftmc.tellmeicheatnow.landia.ac
 
 import io.github.orioncraftmc.tellmeicheatnow.landia.LandiaPacketManager
-import io.github.orioncraftmc.tellmeicheatnow.landia.ac.LandiaAntiCheatPacketReplier.handleClientDataRequestPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaClientDataRequestPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaGameHashRequestPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.respose.LandiaClientDataResponsePacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.reply.ChatReplyAction
+import io.github.orioncraftmc.tellmeicheatnow.model.reply.ChatReplyAction
 import io.github.orioncraftmc.tellmeicheatnow.model.reply.PacketReplyAction
 import io.github.orioncraftmc.tellmeicheatnow.model.reply.ReplyAction
 
