@@ -7,5 +7,7 @@ data class LandiaAntiCheatConstants(
     val clientJarHash: String,
     val antiHackReplyId: String /* VersionHandler#versionId */,
 
+    val macrosModJarHash: String /* MacroModHashCallable#getMacroMd5 */,
+
     val clientData: LandiaClientDataConstants
 )
