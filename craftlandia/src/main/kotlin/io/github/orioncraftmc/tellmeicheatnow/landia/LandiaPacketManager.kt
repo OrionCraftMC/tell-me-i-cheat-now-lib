@@ -6,13 +6,13 @@ import io.github.orioncraftmc.tellmeicheatnow.landia.ac.LandiaAntiCheatPacketRep
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.LandiaAntiCheatPacketReplier.handleGameHashRequestPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.LandiaAntiCheatPacketType
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.LandiaAntiCheatPacketType.*
-import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaClientDataRequestPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaGameHashRequestPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaScreenshotRequestPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.respose.LandiaClientDataResponsePacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaClientDataRequestS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaGameHashRequestS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaScreenshotRequestS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.respose.LandiaClientDataResponseC2SPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.constants.LandiaAntiCheatConstants
-import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionS2CPacket
 import io.github.orioncraftmc.tellmeicheatnow.model.TmicnPacketManager
 import io.github.orioncraftmc.tellmeicheatnow.model.TmicnSupportedServer
 import io.github.orioncraftmc.tellmeicheatnow.model.reply.ReplyAction
@@ -43,10 +43,10 @@ class LandiaPacketManager(val constants: LandiaAntiCheatConstants) :
         val packet = companion.read(data.copyOfRange(1, data.size))
 
         return when {
-            type == GAME_HASH_REQUEST && packet is LandiaGameHashRequestPacket -> this.handleGameHashRequestPacket(
+            type == GAME_HASH_REQUEST && packet is LandiaGameHashRequestS2CPacket -> this.handleGameHashRequestPacket(
                 packet
             )
-            type == CLIENT_DATA_REQUEST && packet is LandiaClientDataRequestPacket -> this.handleClientDataRequestPacket(
+            type == CLIENT_DATA_REQUEST && packet is LandiaClientDataRequestS2CPacket -> this.handleClientDataRequestPacket(
                 packet
             )
             type == SCREENSHOT_REQUEST -> TODO()
@@ -58,13 +58,13 @@ class LandiaPacketManager(val constants: LandiaAntiCheatConstants) :
     override val server: TmicnSupportedServer = TmicnSupportedServer.CRAFTLANDIA
 
     override fun init() {
-        registerPacket(LandiaSkinDataPacket::class)
-        registerPacket(LandiaAntiCheatVersionPacket::class)
+        registerPacket(LandiaSkinDataS2CPacket::class)
+        registerPacket(LandiaAntiCheatVersionS2CPacket::class)
 
-        registerAntiCheatPacket(LandiaGameHashRequestPacket::class, GAME_HASH_REQUEST)
-        registerAntiCheatPacket(LandiaClientDataRequestPacket::class, CLIENT_DATA_REQUEST)
-        registerAntiCheatPacket(LandiaClientDataResponsePacket::class, CLIENT_DATA_RESPONSE)
-        registerAntiCheatPacket(LandiaScreenshotRequestPacket::class, SCREENSHOT_REQUEST)
+        registerAntiCheatPacket(LandiaGameHashRequestS2CPacket::class, GAME_HASH_REQUEST)
+        registerAntiCheatPacket(LandiaClientDataRequestS2CPacket::class, CLIENT_DATA_REQUEST)
+        registerAntiCheatPacket(LandiaClientDataResponseC2SPacket::class, CLIENT_DATA_RESPONSE)
+        registerAntiCheatPacket(LandiaScreenshotRequestS2CPacket::class, SCREENSHOT_REQUEST)
     }
 
     private fun registerAntiCheatPacket(

@@ -1,7 +1,7 @@
 package io.github.orioncraftmc.tellmeicheatnow.landia
 
-import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionS2CPacket
 import io.github.orioncraftmc.tellmeicheatnow.model.reply.ReplyAction
 
 internal object LandiaPacketReplier {
@@ -18,9 +18,9 @@ internal object LandiaPacketReplier {
         val packet = companion.read(data)
 
         if (packetType == LandiaPacketType.SKIN_DATA) {
-            invokeListeners { handleSkinPacket(packet as LandiaSkinDataPacket) }
+            invokeListeners { handleSkinPacket(packet as LandiaSkinDataS2CPacket) }
         } else if (packetType == LandiaPacketType.ANTICHEAT_VERSION) {
-            invokeListeners { handleAntiCheatVersionPacket(packet as LandiaAntiCheatVersionPacket) }
+            invokeListeners { handleAntiCheatVersionPacket(packet as LandiaAntiCheatVersionS2CPacket) }
         }
 
         return null

@@ -8,20 +8,20 @@ import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.OutputStream
 
-data class LandiaClientDataResponsePacket(
+data class LandiaClientDataResponseC2SPacket(
     val constants: LandiaClientDataConstants
 ) : LandiaAntiCheatPacket {
     override val antiCheatRequestType: LandiaAntiCheatPacketType = LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE
 
-    companion object : LandiaPacketCompanion<LandiaClientDataResponsePacket> {
-        override fun read(data: ByteArray): LandiaClientDataResponsePacket {
+    companion object : LandiaPacketCompanion<LandiaClientDataResponseC2SPacket> {
+        override fun read(data: ByteArray): LandiaClientDataResponseC2SPacket {
             DataInputStream(data.inputStream()).use {
                 // Make sure we are reading the correct packet type
                 val type = it.read()
                 if (type != LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE.id)
                     throw Error("Expected packet type to be ${LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE.id}, got $type instead")
 
-                return LandiaClientDataResponsePacket(
+                return LandiaClientDataResponseC2SPacket(
                     LandiaClientDataConstants(
                         /* Speed Modifier (?) */ it.readDouble(),
                         /* Unknown Constant 1 */ it.readDouble(),
@@ -36,7 +36,7 @@ data class LandiaClientDataResponsePacket(
             }
         }
 
-        override fun write(packet: LandiaClientDataResponsePacket, data: OutputStream) {
+        override fun write(packet: LandiaClientDataResponseC2SPacket, data: OutputStream) {
             DataOutputStream(data).use {
                 // Write the packet id
                 it.write(LandiaAntiCheatPacketType.CLIENT_DATA_RESPONSE.id)

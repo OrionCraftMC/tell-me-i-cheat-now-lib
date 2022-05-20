@@ -7,7 +7,7 @@ import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.OutputStream
 
-data class LandiaSkinDataPacket(
+data class LandiaSkinDataS2CPacket(
     val profileName: String,
     val skinUrl: String?,
     val cloakUrl: String?,
@@ -17,9 +17,9 @@ data class LandiaSkinDataPacket(
 
     override val type: LandiaPacketType = LandiaPacketType.SKIN_DATA
 
-    companion object : LandiaPacketCompanion<LandiaSkinDataPacket> {
+    companion object : LandiaPacketCompanion<LandiaSkinDataS2CPacket> {
 
-        override fun read(data: ByteArray): LandiaSkinDataPacket {
+        override fun read(data: ByteArray): LandiaSkinDataS2CPacket {
             return DataInputStream(data.inputStream()).use { stream ->
                 val name = stream.readUTF()
                 val cloakUrl = stream.readUTF().takeIf { it.isNotEmpty() }
@@ -27,11 +27,11 @@ data class LandiaSkinDataPacket(
                 val upsideDown = stream.readBoolean()
                 val scale = stream.readFloat().takeUnless { it == 0.0f } ?: 1.0f
 
-                LandiaSkinDataPacket(name, skinUrl, cloakUrl, upsideDown, scale)
+                LandiaSkinDataS2CPacket(name, skinUrl, cloakUrl, upsideDown, scale)
             }
         }
 
-        override fun write(packet: LandiaSkinDataPacket, data: OutputStream) {
+        override fun write(packet: LandiaSkinDataS2CPacket, data: OutputStream) {
             DataOutputStream(data).use { stream ->
                 stream.writeUTF(packet.profileName)
                 stream.writeUTF(packet.cloakUrl ?: "")

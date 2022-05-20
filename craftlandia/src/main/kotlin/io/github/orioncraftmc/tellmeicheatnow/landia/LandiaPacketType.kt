@@ -1,12 +1,12 @@
 package io.github.orioncraftmc.tellmeicheatnow.landia
 
-import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionS2CPacket
 import kotlin.reflect.KClass
 
 enum class LandiaPacketType(private val payloadChannel: String? = null, val kClass: KClass<out LandiaPacket>? = null) {
-    SKIN_DATA("CL|Skins", LandiaSkinDataPacket::class),
-    ANTICHEAT_VERSION("CL|AHVersion", LandiaAntiCheatVersionPacket::class),
+    SKIN_DATA("CL|Skins", LandiaSkinDataS2CPacket::class),
+    ANTICHEAT_VERSION("CL|AHVersion", LandiaAntiCheatVersionS2CPacket::class),
     ANTI_CHEAT;
 
     companion object {

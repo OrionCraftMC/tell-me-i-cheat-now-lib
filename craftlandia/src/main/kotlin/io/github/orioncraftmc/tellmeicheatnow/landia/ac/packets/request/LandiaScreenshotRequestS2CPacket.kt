@@ -7,17 +7,17 @@ import io.github.orioncraftmc.tellmeicheatnow.readBytesCompat
 import java.io.ByteArrayInputStream
 import java.io.OutputStream
 
-data class LandiaScreenshotRequestPacket(val uploadKey: String) : LandiaAntiCheatPacket {
+data class LandiaScreenshotRequestS2CPacket(val uploadKey: String) : LandiaAntiCheatPacket {
     override val antiCheatRequestType: LandiaAntiCheatPacketType = LandiaAntiCheatPacketType.SCREENSHOT_REQUEST
 
-    companion object : LandiaPacketCompanion<LandiaScreenshotRequestPacket> {
-        override fun read(data: ByteArray): LandiaScreenshotRequestPacket {
+    companion object : LandiaPacketCompanion<LandiaScreenshotRequestS2CPacket> {
+        override fun read(data: ByteArray): LandiaScreenshotRequestS2CPacket {
             return ByteArrayInputStream(data).use {
-                LandiaScreenshotRequestPacket(it.readBytesCompat(it.read()).decodeToString())
+                LandiaScreenshotRequestS2CPacket(it.readBytesCompat(it.read()).decodeToString())
             }
         }
 
-        override fun write(packet: LandiaScreenshotRequestPacket, data: OutputStream) {
+        override fun write(packet: LandiaScreenshotRequestS2CPacket, data: OutputStream) {
             val bytes = packet.uploadKey.toByteArray()
             data.write(bytes.size)
             data.write(bytes)

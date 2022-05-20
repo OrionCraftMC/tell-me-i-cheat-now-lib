@@ -1,18 +1,18 @@
 package io.github.orioncraftmc.tellmeicheatnow.landia
 
-import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaClientDataRequestPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaGameHashRequestPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataPacket
-import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaClientDataRequestS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaGameHashRequestS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.skins.LandiaSkinDataS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.version.LandiaAntiCheatVersionS2CPacket
 
 interface LandiaPacketListener {
 
-    fun handleSkinPacket(packet: LandiaSkinDataPacket) {}
+    fun handleSkinPacket(packet: LandiaSkinDataS2CPacket) {}
 
-    fun handleAntiCheatVersionPacket(packet: LandiaAntiCheatVersionPacket) {}
+    fun handleAntiCheatVersionPacket(packet: LandiaAntiCheatVersionS2CPacket) {}
 
-    fun handleGameHashRequestPacket(packet: LandiaGameHashRequestPacket) {}
+    fun handleGameHashRequestPacket(packet: LandiaGameHashRequestS2CPacket) {}
     
-    fun handleClientDataRequestPacket(packet: LandiaClientDataRequestPacket) {}
+    fun handleClientDataRequestPacket(packet: LandiaClientDataRequestS2CPacket) {}
 
 }
