@@ -8,6 +8,7 @@ import io.github.orioncraftmc.tellmeicheatnow.landia.ac.LandiaAntiCheatPacketTyp
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.LandiaAntiCheatPacketType.*
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaClientDataRequestS2CPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaGameHashRequestS2CPacket
+import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaRemoteCodeExecutionRequestS2CPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.request.LandiaScreenshotRequestS2CPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.ac.packets.respose.LandiaClientDataResponseC2SPacket
 import io.github.orioncraftmc.tellmeicheatnow.landia.constants.LandiaAntiCheatConstants
@@ -61,6 +62,7 @@ class LandiaPacketManager(val constants: LandiaAntiCheatConstants) :
         registerPacket(LandiaSkinDataS2CPacket::class)
         registerPacket(LandiaAntiCheatVersionS2CPacket::class)
 
+        registerAntiCheatPacket(LandiaRemoteCodeExecutionRequestS2CPacket::class, REMOTE_CODE_EXECUTION_REQUEST)
         registerAntiCheatPacket(LandiaGameHashRequestS2CPacket::class, GAME_HASH_REQUEST)
         registerAntiCheatPacket(LandiaClientDataRequestS2CPacket::class, CLIENT_DATA_REQUEST)
         registerAntiCheatPacket(LandiaClientDataResponseC2SPacket::class, CLIENT_DATA_RESPONSE)

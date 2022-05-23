@@ -15,7 +15,7 @@ abstract class TmicnPacketManager<P : TmicnPacket, L : Any> {
     @Suppress("UNCHECKED_CAST")
     fun <T : P> registerPacket(packetType: KClass<T>) {
         if (packetType.companionObjectInstance !is TmicnPacketCompanion<*>) {
-            throw Error("Packet of type $packetType's companion doesn't implement TMICPacketCompanion<${packetType}>")
+            throw Exception("Packet of type $packetType's companion doesn't implement TMICPacketCompanion<${packetType}>")
         }
         packetCompanionByClassMap[packetType as KClass<P>] =
             packetType.companionObjectInstance as TmicnPacketCompanion<P>
@@ -30,7 +30,7 @@ abstract class TmicnPacketManager<P : TmicnPacket, L : Any> {
     fun <M : P, T : P, E : Enum<*>> registerMultiplexPacket(multiplexType: KClass<M>, packetType: KClass<T>, enum: E) {
 
         if (packetType.companionObjectInstance !is TmicnPacketCompanion<*>) {
-            throw Error("Packet of type $packetType's companion doesn't implement TMICPacketCompanion<${packetType}>")
+            throw Exception("Packet of type $packetType's companion doesn't implement TMICPacketCompanion<${packetType}>")
         }
 
         mulitplexPacketCompanionByClassMap.getOrPut(multiplexType as KClass<P>) { mutableMapOf() }[enum] =

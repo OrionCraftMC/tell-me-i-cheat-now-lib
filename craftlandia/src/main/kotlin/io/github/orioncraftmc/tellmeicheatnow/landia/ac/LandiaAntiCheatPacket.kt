@@ -6,6 +6,4 @@ import io.github.orioncraftmc.tellmeicheatnow.landia.LandiaPacketType
 interface LandiaAntiCheatPacket : LandiaPacket {
     override val type: LandiaPacketType
         get() = LandiaPacketType.ANTI_CHEAT
-
-    val antiCheatRequestType: LandiaAntiCheatPacketType
 }
